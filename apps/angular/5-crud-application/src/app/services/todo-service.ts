@@ -19,6 +19,9 @@ export class TodoService {
 
   delete(todo: TodoData) {
     this.todos = this.todos.filter((t) => t.id !== todo.id);
+    this.http
+      .delete<TodoData>(`https://jsonplaceholder.typicode.com/todos/${todo.id}`)
+      .subscribe();
   }
 
   update(todo: TodoData) {
@@ -38,8 +41,6 @@ export class TodoService {
         },
       )
       .subscribe((todoUpdated: TodoData) => {
-        // this.todos[todoUpdated.id - 1] = todoUpdated;
-        // this.todos = [...this.todos.filter((t) => t.id !== todoUpdated.id), todoUpdated]
         this.todos = this.todos.map((t) =>
           t.id === todoUpdated.id ? todoUpdated : t,
         );
