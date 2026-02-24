@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit, signal } from '@angular/core';
+import { ErrorComponent } from './components/errorComponent';
 import { LoadingComponent } from './components/loadingComponent';
 import { TodoData } from './models/todoData';
 import { HttpErrorInterceptor } from './services/httpErrorInterceptor';
@@ -8,9 +9,11 @@ import { LoadingService } from './services/loadingService';
 import { TodoService } from './services/todo-service';
 
 @Component({
-  imports: [CommonModule, LoadingComponent],
+  imports: [CommonModule, LoadingComponent, ErrorComponent],
   selector: 'app-root',
   template: `
+    <app-error></app-error>
+
     {{ loadingMessage$ | async }}
 
     {{ count() }}

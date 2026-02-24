@@ -7,6 +7,7 @@ import {
 import { inject, Injectable, signal } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
+import { ErrorService } from './errorService';
 import { LoadingService } from './loadingService';
 
 @Injectable({
@@ -15,7 +16,7 @@ import { LoadingService } from './loadingService';
 export class HttpErrorInterceptor implements HttpInterceptor {
   errorMessage = signal<string>('');
   loadingService = inject(LoadingService);
-  errorService = inject(LoadingService);
+  errorService = inject(ErrorService);
   private totalRequests = 0;
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
@@ -37,6 +38,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         console.error('HTTP error:', error);
         this.errorMessage.update(() => error.message);
+
+        this.errorService.show('Error: ' + error.message);
 
         if (error.status === 401) {
           // handle unauthorized

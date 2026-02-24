@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { randText } from '@ngneat/falso';
 import { Observable } from 'rxjs';
 import { TodoData } from '../models/todoData';
+import { ErrorService } from './errorService';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +11,7 @@ import { TodoData } from '../models/todoData';
 export class TodoService {
   private apiUrl = 'https://jsonplaceholder.typicode.com/todos';
   private readonly http = inject(HttpClient);
+  private readonly errorService = inject(ErrorService);
 
   todos: TodoData[] = [];
 
@@ -25,6 +27,8 @@ export class TodoService {
   }
 
   update(todo: TodoData) {
+    this.errorService.hide();
+
     this.http
       .put<TodoData>(
         `https://jsonplaceholder.typicode.com/todos/${todo.id}`,
