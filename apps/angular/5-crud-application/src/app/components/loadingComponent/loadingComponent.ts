@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { LoadingService } from '../services/loadingService';
+import { LoadingService } from '../../services/loadingService/loadingService';
 
 @Component({
   imports: [CommonModule],

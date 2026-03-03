@@ -7,8 +7,8 @@ import {
 import { inject, Injectable, signal } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
-import { ErrorService } from './errorService';
-import { LoadingService } from './loadingService';
+import { ErrorService } from '../errorService/errorService';
+import { LoadingService } from '../loadingService/loadingService';
 
 @Injectable({
   providedIn: 'root',

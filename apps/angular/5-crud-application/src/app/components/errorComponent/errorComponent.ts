@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ErrorService } from '../services/errorService';
+import { ErrorService } from '../../services/errorService/errorService';
 
 @Component({
   imports: [CommonModule],
