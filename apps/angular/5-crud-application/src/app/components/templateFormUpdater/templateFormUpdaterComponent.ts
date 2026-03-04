@@ -11,31 +11,30 @@ import { TodoService } from '../../services/todoService/todo-service';
   styleUrl: './templateFormUpdaterComponent.css',
 })
 export class TemplateFormUpdaterComponent {
-  protected id!: number;
-  protected model: TodoData = new TodoDataImpl();
-
-  private todoService = inject(TodoService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private todoService = inject(TodoService);
 
   updateMode: 'new' | 'update' = 'new';
 
-  constructor() {
-    console.log('The form constructor');
-  }
+  protected id!: number;
+  protected model: TodoData = new TodoDataImpl();
+
+  form: any; // access to form
 
   ngOnInit(): void {
-    console.log('The form');
-
-    // this.route.paramMap.subscribe(params => {
-    //   this.id = +params.get('id')!;
-    //   if (this.id) {
-    //     this.updateMode = 'update';
-    //     // this.loadCourse(id);
-    //   } else {
-    //     this.updateMode = 'new';
-    //   }
-    // })
+    this.route.paramMap.subscribe((params) => {
+      this.id = +params.get('id')!;
+      console.log(this.id);
+      if (this.id) {
+        this.updateMode = 'update';
+        this.todoService.getTodo(this.id).subscribe((todo) => {
+          this.model = todo;
+        });
+      } else {
+        this.updateMode = 'new';
+      }
+    });
 
     // if(this.route.snapshot.routeConfig!.path !== 'courses/add'){
     //   this.id = parseInt(this.route.snapshot.params['id'])
@@ -46,6 +45,12 @@ export class TemplateFormUpdaterComponent {
   }
 
   save(): void {
+    if (this.updateMode === 'new') {
+    } else {
+      this.todoService.update(this.model, false);
+      this.router.navigate(['todos']);
+    }
+
     // if(this.route.snapshot.routeConfig!.path === 'courses/add'){
     //   this.orderService.createCourse(this.course).subscribe(
     //     data => {
@@ -62,6 +67,6 @@ export class TemplateFormUpdaterComponent {
   }
 
   cancel(): void {
-    this.router.navigate(['courses']);
+    this.router.navigate(['todos']);
   }
 }

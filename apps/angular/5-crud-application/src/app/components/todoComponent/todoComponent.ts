@@ -49,7 +49,8 @@ export class TodoComponent {
 
   updateTemplateForm(todo: TodoData): void {
     console.log('The call to navigate to /todos/new');
-    this.router.navigate(['todos/new']);
+    // this.router.navigate(['todos/new']);
+    this.router.navigate(['todos/' + todo.id + '/update']);
   }
 
   updateReactiveForm(todo: TodoData): void {}

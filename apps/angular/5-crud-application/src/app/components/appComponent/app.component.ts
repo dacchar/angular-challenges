@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { timer } from 'rxjs/internal/observable/timer';
 import { TodoData } from '../../models/todoData';
 import { HttpErrorInterceptor } from '../../services/httpErrorInterceptor/httpErrorInterceptor';
@@ -11,7 +12,13 @@ import { LoadingComponent } from '../loadingComponent/loadingComponent';
 import { TodoComponent } from '../todoComponent/todoComponent';
 
 @Component({
-  imports: [CommonModule, LoadingComponent, ErrorComponent, TodoComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    LoadingComponent,
+    ErrorComponent,
+    TodoComponent,
+  ],
   selector: 'app-root',
   template: `
     <div>'------------------ signal test ----------------'</div>
@@ -21,6 +28,8 @@ import { TodoComponent } from '../todoComponent/todoComponent';
     <div>'------------------ signal test end ----------------'</div>
     <br />
 
+    <router-outlet></router-outlet>
+
     <app-error></app-error>
 
     {{ loadingMessage$ | async }}
@@ -29,7 +38,6 @@ import { TodoComponent } from '../todoComponent/todoComponent';
     <app-loading></app-loading>
     <br />
     {{ waitMessage }}
-    <br />
     <br />
 
     {{ httpErrorInerceptor.errorMessage() }}

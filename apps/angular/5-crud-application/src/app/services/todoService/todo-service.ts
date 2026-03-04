@@ -19,6 +19,12 @@ export class TodoService {
     return this.http.get<TodoData[]>(this.apiUrl);
   }
 
+  getTodo(id: number): Observable<TodoData> {
+    return this.http.get<TodoData>(
+      `https://jsonplaceholder.typicode.com/todos/${id}`,
+    );
+  }
+
   delete(todo: TodoData) {
     this.todos = this.todos.filter((t) => t.id !== todo.id);
     this.http
@@ -26,7 +32,7 @@ export class TodoService {
       .subscribe();
   }
 
-  update(todo: TodoData) {
+  update(todo: TodoData, randomTitle = true): void {
     this.errorService.hide();
 
     this.http
@@ -34,7 +40,7 @@ export class TodoService {
         `https://jsonplaceholder.typicode.com/todos/${todo.id}`,
         JSON.stringify({
           todo: todo.id,
-          title: randText(),
+          title: randomTitle ? randText() : todo.title,
           body: todo.body,
           userId: todo.userId,
         }),

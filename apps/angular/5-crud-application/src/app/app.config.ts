@@ -4,15 +4,15 @@ import {
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { ApplicationConfig } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { routes } from './app.routes';
 import { HttpErrorInterceptor } from './services/httpErrorInterceptor/httpErrorInterceptor';
-// import { provideRouter } from '@angular/router';
-// import { routes } from './app.routes';
 // import { httpFuncErrorInterceptor } from './services/httpFuncErrorInterceptor';
 //import { HttpErrorInterceptor } from './services/httpErrorInterceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    // provideRouter(routes),
+    provideRouter(routes),
     // provideHttpClient(),
     // provideHttpClient(withInterceptors([httpFuncErrorInterceptor]))
     provideHttpClient(withInterceptorsFromDi()),
