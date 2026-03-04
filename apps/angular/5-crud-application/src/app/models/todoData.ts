@@ -1,7 +1,7 @@
 export interface TodoData {
   userId: number | undefined;
   id: number | undefined;
-  title: string | undefined;
+  title: string | undefined | null;
   body?: string;
   completed: boolean | undefined;
 }

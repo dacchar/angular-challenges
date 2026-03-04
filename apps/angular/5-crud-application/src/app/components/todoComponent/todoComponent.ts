@@ -48,12 +48,12 @@ export class TodoComponent {
   }
 
   updateTemplateForm(todo: TodoData): void {
-    console.log('The call to navigate to /todos/new');
-    // this.router.navigate(['todos/new']);
-    this.router.navigate(['todos/' + todo.id + '/update']);
+    this.router.navigate([`todos/${todo.id}/update`]);
   }
 
-  updateReactiveForm(todo: TodoData): void {}
+  updateReactiveForm(todo: TodoData): void {
+    this.router.navigate([`todos/${todo.id}/updateReactive`]);
+  }
 
   displayWaitMessage(): void {
     this.outputEvent.emit('Wait message from child component...');

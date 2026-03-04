@@ -1,0 +1,24 @@
+<H1>Todo, Reactive</H1>
+
+<div class="container">
+
+    <!-- @if(form.dirty && form.invalid) {
+        <div class="alert alert-warning">Enter valid values!</div>
+    }
+
+    @if(form.dirty && title.invalid) {
+        <div class="alert alert-warning">Enter valid todo title at least 2 characters!</div>
+    }  -->
+
+    <form [formGroup]="todoForm" (ngSubmit)="save()">
+        <label for="title">Title: </label>
+        <input id="title" type="text" formControlName="title" />
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-success" [disabled]="!todoForm.valid">Save</button>
+            <button type="button" class="btn btn-warning" (click)="cancel()">Cancel</button>
+        </div>
+
+    </form>
+
+</div>
