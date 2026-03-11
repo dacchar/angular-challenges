@@ -21,9 +21,9 @@ export class ReactiveFormUpdaterComponent {
 
   protected id!: number;
   protected model: TodoData = {
-    userId: undefined,
-    id: undefined,
-    title: undefined,
+    userId: null,
+    id: null,
+    title: null,
     completed: false,
   };
 

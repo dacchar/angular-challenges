@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { randText } from '@ngneat/falso';
 import { Observable } from 'rxjs';
+import { environment } from '../../environment';
 import { TodoData } from '../../types/todoData';
 import { ErrorService } from '../errorService/errorService';
 
@@ -20,16 +21,12 @@ export class TodoService {
   }
 
   getTodo(id: number): Observable<TodoData> {
-    return this.http.get<TodoData>(
-      `https://jsonplaceholder.typicode.com/todos/${id}`,
-    );
+    return this.http.get<TodoData>(`${environment.apiUrl}/${id}`);
   }
 
   delete(todo: TodoData) {
     this.todos = this.todos.filter((t) => t.id !== todo.id);
-    this.http
-      .delete<TodoData>(`https://jsonplaceholder.typicode.com/todos/${todo.id}`)
-      .subscribe();
+    this.http.delete<TodoData>(`${environment.apiUrl}/${todo.id}`).subscribe();
   }
 
   update(todo: TodoData, randomTitle = true): void {
@@ -37,7 +34,7 @@ export class TodoService {
 
     this.http
       .put<TodoData>(
-        `https://jsonplaceholder.typicode.com/todos/${todo.id}`,
+        `${environment.apiUrl}/${todo.id}`,
         JSON.stringify({
           todo: todo.id,
           title: randomTitle ? randText() : todo.title,
