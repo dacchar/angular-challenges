@@ -1,8 +1,8 @@
-import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 // Define the custom validator function
 export function titleValidator(): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: any } | null => {
+  return (control: AbstractControl): ValidationErrors | null => {
     // Check if the title is empty or contains only whitespace characters
     if (!control.value || /^\s*$/.test(control.value)) {
       return { required: true };

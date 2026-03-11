@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TodoData, TodoDataImpl } from '../../models/todoData';
 import { TodoService } from '../../services/todoService/todo-service';
-import { titleValidator } from '../../validators/titleValidator';
+import { titleValidator } from '../../validators/titleValidator/titleValidator';
 
 @Component({
   selector: 'app-reactive-form-updater-component',

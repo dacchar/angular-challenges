@@ -24,6 +24,7 @@ export class TemplateFormUpdaterComponent {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
+      // it is possible to use snapshot or router component binding
       this.id = +params.get('id')!;
       console.log(this.id);
       if (this.id) {

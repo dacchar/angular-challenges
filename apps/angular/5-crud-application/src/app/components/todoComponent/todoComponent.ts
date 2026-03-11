@@ -52,7 +52,8 @@ export class TodoComponent {
   }
 
   updateReactiveForm(todo: TodoData): void {
-    this.router.navigate([`todos/${todo.id}/updateReactive`]);
+    // this.router.navigate([`todos/${todo.id}/updateReactive`]);
+    this.router.navigate(['todos', todo.id, 'updateReactive']);
   }
 
   displayWaitMessage(): void {
