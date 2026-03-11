@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TodoData, TodoDataImpl } from '../../models/todoData';
 import { TodoService } from '../../services/todoService/todo-service';
+import { TodoData } from '../../types/todoData';
 import { titleValidator } from '../../validators/titleValidator/titleValidator';
 
 @Component({
@@ -20,7 +20,12 @@ export class ReactiveFormUpdaterComponent {
   updateMode: 'new' | 'update' = 'new';
 
   protected id!: number;
-  protected model: TodoData = new TodoDataImpl();
+  protected model: TodoData = {
+    userId: undefined,
+    id: undefined,
+    title: undefined,
+    completed: false,
+  };
 
   // profileForm = new FormGroup<{ title: FormControl }>({
   //   title: new FormControl<string>('')

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { randText } from '@ngneat/falso';
 import { Observable } from 'rxjs';
-import { TodoData } from '../../models/todoData';
+import { TodoData } from '../../types/todoData';
 import { ErrorService } from '../errorService/errorService';
 
 @Injectable({

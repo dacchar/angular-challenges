@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { timer } from 'rxjs/internal/observable/timer';
-import { TodoData } from '../../models/todoData';
 import { LoadingService } from '../../services/loadingService/loadingService';
 import { TodoService } from '../../services/todoService/todo-service';
+import { TodoData } from '../../types/todoData';
 
 @Component({
   imports: [CommonModule],

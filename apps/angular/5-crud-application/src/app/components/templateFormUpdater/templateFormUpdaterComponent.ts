@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TodoData, TodoDataImpl } from '../../models/todoData';
 import { TodoService } from '../../services/todoService/todo-service';
+import { TodoData } from '../../types/todoData';
 
 @Component({
   selector: 'app-template-form-updater-component',
@@ -18,7 +18,12 @@ export class TemplateFormUpdaterComponent {
   updateMode: 'new' | 'update' = 'new';
 
   protected id!: number;
-  protected model: TodoData = new TodoDataImpl();
+  protected model: TodoData = {
+    userId: undefined,
+    id: undefined,
+    title: undefined,
+    completed: false,
+  };
 
   form: any; // access to form
 
