@@ -6,7 +6,7 @@ import { timer } from 'rxjs/internal/observable/timer';
 import { HttpErrorInterceptor } from '../../services/httpErrorInterceptor/httpErrorInterceptor';
 import { LoadingService } from '../../services/loadingService/loadingService';
 import { TodoService } from '../../services/todoService/todo-service';
-import { TodoData } from '../../types/todoData';
+import { stringOrNull, TodoData } from '../../types/todoData';
 import { ErrorComponent } from '../errorComponent/errorComponent';
 import { LoadingComponent } from '../loadingComponent/loadingComponent';
 import { TodoComponent } from '../todoComponent/todoComponent';
@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
   loadingService = inject(LoadingService);
   selectedTodo: TodoData | null = null;
 
-  waitMessage: string | null = null;
+  waitMessage: stringOrNull = null;
 
   em: string = '';
   count = signal(0);

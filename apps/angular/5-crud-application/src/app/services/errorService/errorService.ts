@@ -1,6 +1,7 @@
 // loading.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { stringOrNull } from '../../types/todoData';
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +10,8 @@ export class ErrorService {
   private errorSubject = new BehaviorSubject<boolean>(false);
   error$ = this.errorSubject.asObservable();
 
-  private errorMessageSubject = new BehaviorSubject<string | null>(null);
-  errorMessage$: Observable<string | null> =
+  private errorMessageSubject = new BehaviorSubject<stringOrNull>(null);
+  errorMessage$: Observable<stringOrNull> =
     this.errorMessageSubject.asObservable();
 
   show(message: string): void {

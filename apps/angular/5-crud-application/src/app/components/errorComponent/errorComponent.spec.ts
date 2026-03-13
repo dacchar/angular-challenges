@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
 import { ErrorService } from '../../services/errorService/errorService';
+import { stringOrNull } from '../../types/todoData';
 import { ErrorComponent } from './errorComponent';
 
 describe('ErrorComponent', () => {
@@ -9,11 +10,11 @@ describe('ErrorComponent', () => {
 
   // create controllable streams
   let errorSubject: BehaviorSubject<boolean>;
-  let messageSubject: BehaviorSubject<string | null>;
+  let messageSubject: BehaviorSubject<stringOrNull>;
 
   const mockErrorService = {
     error$: new BehaviorSubject<boolean>(false),
-    errorMessage$: new BehaviorSubject<string | null>(null),
+    errorMessage$: new BehaviorSubject<stringOrNull>(null),
   };
 
   beforeEach(async () => {

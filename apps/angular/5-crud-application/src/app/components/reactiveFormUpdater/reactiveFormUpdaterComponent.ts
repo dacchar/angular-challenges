@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TodoService } from '../../services/todoService/todo-service';
-import { TodoData } from '../../types/todoData';
+import { stringOrNull, TodoData } from '../../types/todoData';
 import { titleValidator } from '../../validators/titleValidator/titleValidator';
 
 @Component({
@@ -33,7 +33,7 @@ export class ReactiveFormUpdaterComponent {
 
   todoForm = this.formBuilder.group({
     title: [
-      new FormControl<string | null | undefined>(''),
+      new FormControl<stringOrNull>(''),
       //[Validators.required]
       [titleValidator()],
     ],
